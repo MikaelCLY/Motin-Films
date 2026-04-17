@@ -1,0 +1,38 @@
+{
+  "name": "motin-films",
+  "version": "1.0.0",
+  "description": "Motin Films - Lead Capture System",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.103.3",
+    "@tailwindcss/postcss": "^4.2.2",
+    "autoprefixer": "^10.4.21",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.6.5",
+    "lucide-react": "^0.511.0",
+    "next": "^16.2.4",
+    "postcss": "^8.5.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-hook-form": "^7.56.0",
+    "recharts": "^3.8.1",
+    "tailwind-merge": "^3.2.0",
+    "tailwindcss": "^4.2.2",
+    "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "typescript": "^5.8.3"
+  }
+}
