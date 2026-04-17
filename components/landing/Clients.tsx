@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import Image from 'next/image'
 
 const clients = [
   { name: 'Unimed', src: '/images/unimed.png' },
@@ -43,9 +44,11 @@ export default function Clients() {
                 aria-label={`Logo do cliente ${client.name}`}
               >
                 {/* Fallback to alt text beautifully if image is not downloaded yet */}
-                <img
+                <Image
                   src={client.src}
                   alt={client.name}
+                  width={160}
+                  height={48}
                   className="max-h-12 w-auto object-contain text-white/50 font-display font-medium text-lg uppercase tracking-widest"
                 />
               </div>
