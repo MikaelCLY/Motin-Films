@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { Quote, ChevronLeft, ChevronRight, Star } from 'lucide-react'
 
 const testimonials = [
@@ -30,14 +30,21 @@ const testimonials = [
 ]
 
 export default function Testimonials() {
-  const [current, setCurrent] = useState(0)
   const ref = useRef(null)
+  const carouselRef = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
-  const prev = () => setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length)
-  const next = () => setCurrent((c) => (c + 1) % testimonials.length)
+  const scrollLeft = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: -400, behavior: 'smooth' })
+    }
+  }
 
-  const t = testimonials[current]
+  const scrollRight = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: 400, behavior: 'smooth' })
+    }
+  }
 
   return (
     <section id="testimonials" ref={ref} className="section-padding bg-brand-dark relative overflow-hidden">
@@ -72,94 +79,91 @@ export default function Testimonials() {
           />
         </div>
 
-        {/* Testimonial Card */}
+        {/* Testimonial Cards Carousel */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.3 }}
-          className="max-w-3xl mx-auto"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="relative max-w-7xl mx-auto group/carousel -mx-4 px-4 sm:mx-0 sm:px-0"
         >
-          <div className="glass-teal p-10 md:p-14 relative rounded-3xl">
-            {/* Teal quote icon */}
-            <Quote className="w-10 h-10 text-brand-teal/30 mb-8" fill="currentColor" />
-
-            {/* Stars */}
-            <div className="flex gap-1 mb-6">
-              {Array.from({ length: t.stars }).map((_, i) => (
-                <Star key={i} className="w-5 h-5 text-brand-teal fill-brand-teal" />
-              ))}
+          {/* Navigation Buttons (No Netflix styling/shadows) */}
+          <button
+            onClick={scrollLeft}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 sm:w-16 h-full flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 disabled:opacity-0"
+            aria-label="Scroll left"
+          >
+            <div className="w-10 h-10 rounded-full bg-black/40 hover:bg-brand-teal text-white flex items-center justify-center backdrop-blur-sm transition-colors transform hover:scale-110 ml-2">
+              <ChevronLeft className="w-6 h-6" />
             </div>
+          </button>
 
-            {/* Quote */}
-            <motion.p
-              key={current}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.4 }}
-              className="font-display text-xl md:text-2xl text-white/90 leading-relaxed font-medium mb-10"
-            >
-              "{t.text}"
-            </motion.p>
-
-            {/* Author */}
-            <motion.div
-              key={`author-${current}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="flex items-center gap-4"
-            >
-              {/* Avatar placeholder */}
-              <div className="w-12 h-12 bg-brand-teal/20 border border-brand-teal/30 flex items-center justify-center font-display font-bold text-brand-teal text-lg rounded-full">
-                {t.name[0]}
-              </div>
-              <div>
-                <p className="font-bold text-white text-lg tracking-tight">{t.name}</p>
-                <p className="text-sm font-medium text-brand-teal/70">
-                  {t.role}{t.company ? ` · ${t.company}` : ''}
-                </p>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Navigation */}
-          <div className="flex items-center justify-center gap-6 mt-8">
-            <button
-              onClick={prev}
-              id="testimonial-prev"
-              className="w-12 h-12 rounded-full glass hover:glass-teal flex items-center justify-center transition-all duration-200 hover:border-brand-teal/50"
-              aria-label="Depoimento anterior"
-            >
-              <ChevronLeft className="w-5 h-5 text-white/60 hover:text-brand-teal" />
-            </button>
-
-            <div className="flex gap-2">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  className={`transition-all duration-300 rounded-full ${
-                    i === current
-                      ? 'w-10 h-2 bg-brand-teal'
-                      : 'w-2 h-2 bg-white/20 hover:bg-white/40'
-                  }`}
-                  aria-label={`Ir para depoimento ${i + 1}`}
-                />
-              ))}
+          <button
+            onClick={scrollRight}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 sm:w-16 h-full flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 disabled:opacity-0"
+            aria-label="Scroll right"
+          >
+            <div className="w-10 h-10 rounded-full bg-black/40 hover:bg-brand-teal text-white flex items-center justify-center backdrop-blur-sm transition-colors transform hover:scale-110 mr-2">
+              <ChevronRight className="w-6 h-6" />
             </div>
+          </button>
 
-            <button
-              onClick={next}
-              id="testimonial-next"
-              className="w-12 h-12 rounded-full glass hover:glass-teal flex items-center justify-center transition-all duration-200 hover:border-brand-teal/50"
-              aria-label="Próximo depoimento"
-            >
-              <ChevronRight className="w-5 h-5 text-white/60 hover:text-brand-teal" />
-            </button>
+          {/* Carousel Track */}
+          <div
+            ref={carouselRef}
+            className="flex overflow-x-auto gap-6 sm:gap-8 snap-x snap-mandatory pb-8 pt-4 scrollbar-hide px-4 sm:px-8"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none'
+            }}
+          >
+            {testimonials.map((t, i) => (
+              <div 
+                key={i} 
+                className="snap-center sm:snap-start shrink-0 w-[300px] sm:w-[450px] md:w-[600px] glass-teal p-8 md:p-12 relative rounded-3xl flex flex-col justify-between"
+              >
+                <div>
+                  {/* Teal quote icon */}
+                  <Quote className="w-10 h-10 text-brand-teal/30 mb-6" fill="currentColor" />
+
+                  {/* Stars */}
+                  <div className="flex gap-1 mb-6">
+                    {Array.from({ length: t.stars }).map((_, i) => (
+                      <Star key={i} className="w-5 h-5 text-brand-teal fill-brand-teal" />
+                    ))}
+                  </div>
+
+                  {/* Quote */}
+                  <p className="font-display text-lg md:text-xl text-white/90 leading-relaxed font-medium mb-8">
+                    "{t.text}"
+                  </p>
+                </div>
+
+                {/* Author */}
+                <div className="flex items-center gap-4 mt-auto">
+                  {/* Avatar placeholder */}
+                  <div className="w-12 h-12 bg-brand-teal/20 border border-brand-teal/30 flex items-center justify-center font-display font-bold text-brand-teal text-lg rounded-full shrink-0">
+                    {t.name[0]}
+                  </div>
+                  <div>
+                    <p className="font-bold text-white text-lg tracking-tight">{t.name}</p>
+                    <p className="text-sm font-medium text-brand-teal/70">
+                      {t.role}{t.company ? ` · ${t.company}` : ''}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>
+
+      {/* Hide scrollbar completely */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+      `}} />
     </section>
   )
 }
