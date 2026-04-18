@@ -33,20 +33,14 @@ export default function Clients() {
           </motion.p>
         </div>
 
-        <div className="relative w-full max-w-7xl mx-auto">
-          {/* Native scrollable track matching Portfolio UX but without buttons */}
-          <div 
-            className="flex overflow-x-auto gap-12 md:gap-24 px-4 sm:px-12 items-center py-6 snap-x snap-mandatory scrollbar-hide"
-            style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none'
-            }}
-          >
-            {/* Duplicamos para dar volume inicial se quiserem, mas em scroll navivo clients sem duplicar faz mais sentido. Resolverei mantendo 1 array de clients duplo. */}
+        <div className="overflow-hidden relative w-full max-w-7xl mx-auto">
+          {/* The continuous marquee track */}
+          <div className="flex w-max animate-marquee gap-16 md:gap-32 px-8 items-center cursor-default">
+            {/* We duplicate the array to allow the seamless infinite loop (-50% transform) */}
             {[...clients, ...clients].map((client, index) => (
               <div
                 key={`${client.name}-${index}`}
-                className="snap-center shrink-0 flex items-center justify-center opacity-40 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300 min-w-[140px] md:min-w-[160px]"
+                className="flex items-center justify-center opacity-40 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300 min-w-[120px] md:min-w-[160px]"
                 aria-label={`Logo do cliente ${client.name}`}
               >
                 {/* Fallback to alt text beautifully if image is not downloaded yet */}
@@ -62,18 +56,10 @@ export default function Clients() {
           </div>
 
           {/* Fade masks for cinematic edges */}
-          <div className="absolute inset-y-0 left-0 w-12 sm:w-24 bg-gradient-to-r from-brand-dark-2 to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-12 sm:w-24 bg-gradient-to-l from-brand-dark-2 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-brand-dark-2 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-brand-dark-2 to-transparent z-10 pointer-events-none" />
         </div>
       </div>
-      
-      {/* Hide scrollbar */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-      `}} />
     </section>
   )
 }
