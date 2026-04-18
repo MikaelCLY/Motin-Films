@@ -81,18 +81,6 @@ export default function Hero() {
       </div>
 
       <div className="container-custom relative z-10 text-center pt-24 pb-16">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 glass-teal px-4 py-2 mb-8"
-        >
-          <Play className="w-3 h-3 text-brand-teal fill-brand-teal" />
-          <span className="text-xs font-semibold uppercase tracking-widest text-brand-teal">
-            MOTIN FILMS
-          </span>
-        </motion.div>
 
         {/* Main Title */}
         <motion.h1
@@ -158,17 +146,6 @@ export default function Hero() {
           ))}
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-xs uppercase tracking-widest text-white/30 font-semibold">Scroll</span>
-        <div className="w-px h-12 bg-gradient-to-b from-brand-teal to-transparent animate-pulse" />
-      </motion.div>
     </section>
   )
 }

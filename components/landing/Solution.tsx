@@ -8,14 +8,14 @@ import { CheckCircle2, Lightbulb, Users, Zap, Building2, Package, Mic, Video } f
 const solutions = [
   {
     icon: Building2,
-    title: 'Filmes Institucional',
+    title: 'Filme Institucional',
     description: 'Apresente seus produtos, serviços, valores e missão de forma envolvente e profissional, fortalecendo a identidade da sua marca.',
     benefit: 'SAIBA MAIS!',
     href: 'https://youtu.be/CTTnFhk2iUI?si=b54qqXDLOhvKJ2WE',
   },
   {
     icon: Package,
-    title: 'Filmes Produto',
+    title: 'Filme Produto',
     description: 'Destaque seus produtos de maneira única no mercado, expondo seus diferenciais e impulsionando vendas.',
     benefit: 'SAIBA MAIS!',
     href: 'https://youtu.be/elQCwkM876I?si=3aPbo25NufR2zV6z',
@@ -29,7 +29,7 @@ const solutions = [
   },
   {
     icon: Video,
-    title: 'Filmes Conteúdo',
+    title: 'Filme Conteúdo',
     description: 'Dê voz à sua marca nas redes sociais com conteúdos estratégicos que informam, conectam e geram autoridade.',
     benefit: 'SAIBA MAIS!',
     href: 'https://youtu.be/_HyKcah7Qzw?si=CdRzO2ORq7jsheRV',
@@ -83,7 +83,7 @@ export default function Solution() {
                 </div>
                 <h3 className="font-display font-bold text-xl text-white mb-3 tracking-tight">{sol.title}</h3>
                 <p className="text-sm text-white/60 font-medium leading-relaxed mb-6 flex-grow">{sol.description}</p>
-                <a 
+                <a
                   href={sol.href}
                   target="_blank"
                   rel="noopener noreferrer"

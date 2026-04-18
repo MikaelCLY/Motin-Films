@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Image from 'next/image'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const clients = [
   { name: 'Unimed', src: '/images/unimed.png' },
@@ -18,10 +19,23 @@ const clients = [
 
 export default function Clients() {
   const ref = useRef(null)
+  const carouselRef = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-50px' })
 
+  const scrollLeft = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: -300, behavior: 'smooth' })
+    }
+  }
+
+  const scrollRight = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: 300, behavior: 'smooth' })
+    }
+  }
+
   return (
-    <section ref={ref} className="py-16 md:py-24 bg-brand-dark-2 relative border-t border-black border-opacity-20 z-20">
+    <section ref={ref} className="py-16 md:py-24 bg-brand-dark-2 relative border-t border-black border-opacity-20 z-20 overflow-hidden">
       <div className="container-custom relative z-10">
         <div className="text-center mb-12">
           <motion.p
@@ -33,17 +47,43 @@ export default function Clients() {
           </motion.p>
         </div>
 
-        <div className="overflow-hidden relative w-full max-w-7xl mx-auto">
-          {/* The continuous marquee track */}
-          <div className="flex w-max animate-marquee gap-16 md:gap-32 px-8 items-center cursor-default">
-            {/* We duplicate the array to allow the seamless infinite loop (-50% transform) */}
+        <div className="relative w-full max-w-7xl mx-auto group/carousel px-4 sm:px-12">
+          {/* Navigation Buttons (No Netflix styling/shadows) */}
+          <button
+            onClick={scrollLeft}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 disabled:opacity-0"
+            aria-label="Scroll left"
+          >
+            <div className="w-10 h-10 rounded-full bg-black/40 hover:bg-brand-teal text-white flex items-center justify-center backdrop-blur-sm transition-colors border border-white/10">
+              <ChevronLeft className="w-6 h-6" />
+            </div>
+          </button>
+
+          <button
+            onClick={scrollRight}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 disabled:opacity-0"
+            aria-label="Scroll right"
+          >
+            <div className="w-10 h-10 rounded-full bg-black/40 hover:bg-brand-teal text-white flex items-center justify-center backdrop-blur-sm transition-colors border border-white/10">
+              <ChevronRight className="w-6 h-6" />
+            </div>
+          </button>
+
+          {/* Carousel Track */}
+          <div
+            ref={carouselRef}
+            className="flex overflow-x-auto gap-12 md:gap-24 snap-x snap-mandatory py-4 scrollbar-hide items-center"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none'
+            }}
+          >
             {[...clients, ...clients].map((client, index) => (
               <div
                 key={`${client.name}-${index}`}
-                className="flex items-center justify-center opacity-40 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300 min-w-[120px] md:min-w-[160px]"
+                className="snap-center shrink-0 flex items-center justify-center opacity-50 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300 min-w-[140px] md:min-w-[180px]"
                 aria-label={`Logo do cliente ${client.name}`}
               >
-                {/* Fallback to alt text beautifully if image is not downloaded yet */}
                 <Image
                   src={client.src}
                   alt={client.name}
@@ -54,12 +94,16 @@ export default function Clients() {
               </div>
             ))}
           </div>
-
-          {/* Fade masks for cinematic edges */}
-          <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-brand-dark-2 to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-brand-dark-2 to-transparent z-10 pointer-events-none" />
         </div>
       </div>
+      
+      {/* Hide scrollbar */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+      `}} />
     </section>
   )
 }
