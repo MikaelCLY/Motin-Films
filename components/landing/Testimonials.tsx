@@ -119,7 +119,7 @@ export default function Testimonials() {
             {testimonials.map((t, i) => (
               <div 
                 key={i} 
-                className="snap-center sm:snap-start shrink-0 w-[300px] sm:w-[450px] md:w-[600px] glass-teal p-8 md:p-12 relative rounded-3xl flex flex-col justify-between"
+                className="snap-center sm:snap-start shrink-0 w-[300px] sm:w-[450px] md:w-[600px] bg-brand-dark-3/80 border border-white/5 group hover:border-brand-teal/30 p-8 md:p-12 relative rounded-3xl flex flex-col justify-between transition-all duration-300"
               >
                 <div>
                   {/* Teal quote icon */}
