@@ -122,20 +122,20 @@ export default function Portfolio() {
           {/* Netflix Side Navigation */}
           <button
             onClick={scrollLeft}
-            className="absolute left-0 top-0 z-20 w-12 sm:w-16 h-full bg-gradient-to-r from-brand-dark-2 via-brand-dark-2/80 to-transparent flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 disabled:opacity-0"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 sm:w-16 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 disabled:opacity-0"
             aria-label="Scroll left"
           >
-            <div className="w-10 h-10 rounded-full bg-black/50 hover:bg-brand-teal text-white flex items-center justify-center backdrop-blur-sm transition-colors transform hover:scale-110">
+            <div className="w-10 h-10 rounded-full bg-black/50 hover:bg-brand-teal text-white flex items-center justify-center backdrop-blur-sm transition-colors transform hover:scale-110 ml-2">
               <ChevronLeft className="w-6 h-6" />
             </div>
           </button>
 
           <button
             onClick={scrollRight}
-            className="absolute right-0 top-0 z-20 w-12 sm:w-16 h-full bg-gradient-to-l from-brand-dark-2 via-brand-dark-2/80 to-transparent flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 disabled:opacity-0"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 sm:w-16 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 disabled:opacity-0"
             aria-label="Scroll right"
           >
-            <div className="w-10 h-10 rounded-full bg-black/50 hover:bg-brand-teal text-white flex items-center justify-center backdrop-blur-sm transition-colors transform hover:scale-110">
+            <div className="w-10 h-10 rounded-full bg-black/50 hover:bg-brand-teal text-white flex items-center justify-center backdrop-blur-sm transition-colors transform hover:scale-110 mr-2">
               <ChevronRight className="w-6 h-6" />
             </div>
           </button>
