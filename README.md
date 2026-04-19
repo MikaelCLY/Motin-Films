@@ -109,7 +109,6 @@ O projeto cumpre rigorosamente os requisitos de performance do Google:
 
 ## 📄 Licença
 
-Este projeto foi desenvolvido como um desafio técnico para a ****. Todos os direitos do conteúdo visual pertencem à produtora.
+Este projeto foi desenvolvido como um desafio técnico.
 
 ---
-*Desenvolvido com ❤️ e assistência de IA para demonstrar o futuro do desenvolvimento full-stack.*
