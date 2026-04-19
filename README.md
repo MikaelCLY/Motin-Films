@@ -1,6 +1,6 @@
-# 🎞️ Motin Films — Sistema de Captação de Leads
+# 🎞️  — Sistema de Captação de Leads
 
-![Motin Films Banner](<img width="384" height="176" alt="image" src="https://github.com/user-attachments/assets/c88ee055-5d29-4858-9e5f-7e73d8407f32" />
+(<img width="384" height="176" alt="image" src="https://github.com/user-attachments/assets/c88ee055-5d29-4858-9e5f-7e73d8407f32" />
 
 
 ## 🎯 Visão Geral do Projeto
@@ -14,7 +14,7 @@ O sistema foi construído focando em três pilares: **Conversão**, **Performanc
 ## 🚀 Principais Funcionalidades
 
 ### 🌐 Landing Page (Lado do Cliente)
-- **Design Cinematográfico:** UI inspirada na identidade visual premium da Motin Films, com animações fluidas via Framer Motion.
+- **Design:** UI inspirada na identidade visual premium da Motin Films, com animações fluidas via Framer Motion.
 - **Portfólio Dinâmico:** Seção de cases categorizados para demonstração de autoridade.
 - **Captação Otimizada:** Formulário inteligente com validação em tempo real e feedback instantâneo de sucesso/erro.
 - **SEO & Performance:** Estruturada com Server Components para carregamento instantâneo e otimização para motores de busca.
@@ -109,7 +109,7 @@ O projeto cumpre rigorosamente os requisitos de performance do Google:
 
 ## 📄 Licença
 
-Este projeto foi desenvolvido como um desafio técnico para a **Motin Films**. Todos os direitos do conteúdo visual pertencem à produtora.
+Este projeto foi desenvolvido como um desafio técnico para a ****. Todos os direitos do conteúdo visual pertencem à produtora.
 
 ---
 *Desenvolvido com ❤️ e assistência de IA para demonstrar o futuro do desenvolvimento full-stack.*
