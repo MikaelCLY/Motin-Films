@@ -1,6 +1,7 @@
 # 🎞️ Motin Films — Sistema de Captação de Leads
 
-![Motin Films Banner](https://motinfilms.com.br/wp-content/uploads/2023/10/Logo-Motin-Films-Horizontal-Branco.png)
+![Motin Films Banner](<img width="384" height="176" alt="image" src="https://github.com/user-attachments/assets/c88ee055-5d29-4858-9e5f-7e73d8407f32" />
+
 
 ## 🎯 Visão Geral do Projeto
 
