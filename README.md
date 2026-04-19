@@ -1,6 +1,6 @@
 # 🎞️  — Sistema de Captação de Leads
 
-(<img width="384" height="176" alt="image" src="https://github.com/user-attachments/assets/c88ee055-5d29-4858-9e5f-7e73d8407f32" />
+<img width="384" height="176" alt="image" src="https://github.com/user-attachments/assets/c88ee055-5d29-4858-9e5f-7e73d8407f32" />
 
 
 ## 🎯 Visão Geral do Projeto
